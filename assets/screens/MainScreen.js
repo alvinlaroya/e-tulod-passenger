@@ -231,6 +231,7 @@ const MainScreen = ({ route, navigation }) => {
     firebase.firestore().collection("bookings")
       .doc(currentBookedId)
       .collection("timeline")
+      .orderBy("step", "desc")
       .onSnapshot((querySnapshot) => {
         const tempArray = querySnapshot.docs.map((documentSnapshot) => {
           return {
